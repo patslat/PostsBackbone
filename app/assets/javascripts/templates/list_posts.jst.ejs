@@ -1,0 +1,13 @@
+<h1>All Posts</h1>
+<ul>
+  <% collection.each(function (element) { %>
+    <li>
+      <a href="#/posts/<%= element.escape("id") %>"><%= element.escape("title") %></a>
+      <button data-id="<%= element.escape("id") %>" class="delete_btn">
+        Delete
+      </button>
+    </li>
+  <% }) %>
+</ul>
+
+<button class="new_btn">New Post</button>

@@ -1,0 +1,14 @@
+<div id="posts_window">
+
+</div>
+<script type="text/javascript" id="bootstrapped-data">
+  <%= Post.all.to_json.html_safe %>
+</script>
+
+<script type="text/javascript">
+  $(function () {
+    var posts = JSON.parse($("#bootstrapped-data").html());
+
+    window.App.initialize($("#posts_window"), posts);
+  })
+</script>
