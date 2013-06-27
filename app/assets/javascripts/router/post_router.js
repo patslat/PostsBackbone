@@ -11,8 +11,7 @@ App.Router.PostsRouter = Backbone.Router.extend({
   },
 
   index: function() {
-    var view = new App.Views.PostListView({ collection: this.posts });
-    this.$rootEl.html(view.render().$el);
+    this.$rootEl.empty();
   },
 
   show: function (id) {
@@ -23,7 +22,10 @@ App.Router.PostsRouter = Backbone.Router.extend({
   },
 
   newPost: function () {
-    var view = new App.Views.PostNewView({ collection: this.posts });
+    var view = new App.Views.PostNewView({
+      model: new App.Models.Post(),
+      collection: this.posts
+    });
 
     this.$rootEl.html(view.render().$el);
   }

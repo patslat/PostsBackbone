@@ -1,10 +1,12 @@
 <form id="new_post">
 <label for="post-title">Title</label>
-<input type="text" name="post[title]" id="post-title" value="<%= model.title %>">
+<input type="text" name="post[title]" id="post-title"
+  value="<%= model.escape("title") %>">
 <br>
 <label for="post-body">Body</label>
 <br>
-<textarea name="post[body]" rows="8" cols="40" id="post-body"><%= model.body %>
+<textarea name="post[body]" rows="8" cols="40"
+  id="post-body"><%= model.escape("body") %>
 </textarea>
 
 <button class="submit_new_btn">Submit</button>

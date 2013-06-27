@@ -3,9 +3,9 @@ App.Views.PostNewView = Backbone.View.extend({
 
   events: { 'click button.submit_new_btn': "create" },
 
-  render: function(failedPost) {
+  render: function() {
     var content = JST["templates/new_post"]({
-      model: failedPost || { title: "", body: ""}
+      model: this.model
     });
 
     this.$el.html(content);
@@ -13,22 +13,19 @@ App.Views.PostNewView = Backbone.View.extend({
   },
 
   create: function(event) {
-    event.preventDefault();
-
     var that = this;
+    event.preventDefault();
+    this.model.collection = this.collection;
+    var attrs = $(event.target.form).serializeJSON().post;
 
-    var formData = $(event.target.form).serialize();
-
-    $.ajax({
-      url: "/posts",
-      type: "post",
-      data: formData,
+    this.model.save(attrs, {
       success: function (post) {
         that.collection.add(post);
-        Backbone.history.navigate("#/")
+        Backbone.history.navigate("#/");
       },
-      error: function (failedPost) {
-        that.render(failedPost);
+      error: function (post) {
+        that.model = post;
+        that.render();
       }
     });
   }

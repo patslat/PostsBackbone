@@ -1,6 +1,6 @@
-<div id="posts_window">
+<div id="sidebar" style="float: left;"></div>
+<div id="content" style="float: left; padding-left: 100px;"></div>
 
-</div>
 <script type="text/javascript" id="bootstrapped-data">
   <%= Post.all.to_json.html_safe %>
 </script>
@@ -9,6 +9,6 @@
   $(function () {
     var posts = JSON.parse($("#bootstrapped-data").html());
 
-    window.App.initialize($("#posts_window"), posts);
+    window.App.initialize($("#sidebar"), $("#content"), posts);
   })
 </script>

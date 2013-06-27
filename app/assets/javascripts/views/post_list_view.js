@@ -1,9 +1,10 @@
 App.Views.PostListView = Backbone.View.extend({
   initialize: function () {
-    var that = this;
-    this.collection.on("change", function() {
-      that.render()
-    })
+    var callback = this.render.bind(this);
+
+    this.listenTo(this.collection, "add", callback);
+    this.listenTo(this.collection, "change", callback);
+    this.listenTo(this.collection, "remove", callback);
   },
 
   events: {

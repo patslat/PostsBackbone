@@ -1,5 +1,11 @@
-<div>
-  <%= post.escape("title") %>
-  <%= post.escape("body") %>
+<div class="somethingunique">
+  <h1 class="title" data-id="<%= post.id %>">
+    <%= post.escape("title") %>
+  </h1>
+
+  <p class="body" data-id="<%= post.id %>">
+    <%= post.escape("body") %>
+  </p>
+
   <button class="back_btn">Back</button>
 </div>

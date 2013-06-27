@@ -10,16 +10,21 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(params[:post])
-    puts "1"
 
     if @post.save
-      puts "2"
       render :json => @post
     else
-      puts "3"
       render :json => @post.errors, :status => 422
     end
-    puts "4"
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    if @post.update_attributes(params[:post])
+      render :json => @post
+    else
+      render :json => @post.errors, :status => 422
+    end
   end
 
   def destroy

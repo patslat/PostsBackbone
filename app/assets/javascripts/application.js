@@ -15,6 +15,7 @@
 //= require underscore
 //= require backbone
 //
+//= require serializeJSON.min
 //= require posts
 //
 //= require_tree ./router
